@@ -1,0 +1,18 @@
+{
+	"name": "generator-tremtec",
+	"version": "0.1.0",
+	"description": "",
+	"files": [
+		"generators"
+	],
+	"keywords": [
+		"yeoman-generator"
+	],
+	"dependencies": {
+		"generator-generator": "^4.0.2",
+		"yeoman-generator": "^4.4.0"
+	},
+	"devDependencies": {
+		"@types/yeoman-generator": "^3.1.4"
+	}
+}
