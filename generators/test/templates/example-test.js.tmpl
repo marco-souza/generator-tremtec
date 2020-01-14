@@ -1,0 +1,50 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from 'components/App';
+
+import { useLoadingMocked } from 'assets/__mocks__/useLoading';
+
+// mock module as a function
+jest.mock('src/redux/loading', () => jest.fn());
+import methodToMock from 'src/redux/loading';
+const mockedMethod = methodToMock as jest.Mock;
+
+describe('App', () => {
+  beforeEach(() => {
+    jest.resetModules();
+  });
+
+  it('renders without crashing', () => {
+    const mockObject = useLoadingMocked();
+    mockedMethod.mockImplementation(() => mockObject);
+
+    const div = document.createElement('div');
+    ReactDOM.render(<App />, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+
+  it('click stopAction', () => {
+    const mockObject = useLoadingMocked();
+    mockedMethod.mockImplementation(() => mockObject);
+    const wrapper = shallow(<App />);
+    const button = wrapper.find('button');
+
+    button.simulate('click');
+    expect(mockObject.actions.stopLoading.mock.calls).toHaveLength(1);
+    button.simulate('click');
+    expect(mockObject.actions.stopLoading.mock.calls).toHaveLength(2);
+  });
+
+  it('click startAction', () => {
+    const mockObject = useLoadingMocked({ state: { isLoading: false } });
+    mockedMethod.mockImplementation(() => mockObject);
+
+    const wrapper = shallow(<App />);
+    const button = wrapper.find('button');
+
+    button.simulate('click');
+    expect(mockObject.actions.startLoading.mock.calls).toHaveLength(1);
+    button.simulate('click');
+    expect(mockObject.actions.startLoading.mock.calls).toHaveLength(2);
+  });
+});

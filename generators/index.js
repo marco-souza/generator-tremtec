@@ -5,6 +5,7 @@ const ComponentGenerator = require("./comp")
 
 const generators = {
   component: "tremtec:comp",
+  test: "tremtec:test",
 }
 
 module.exports = class extends Generator {
