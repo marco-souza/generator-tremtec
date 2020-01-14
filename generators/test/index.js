@@ -13,35 +13,42 @@ module.exports = class extends Generator {
       {
         type: "input",
         name: "name",
-        message: "Who need some test?",
+        message: "Who need tests?",
+      },
+      {
+        type: "confirm",
+        name: "core",
+        default: false,
+        message: "Is it a core component?",
       },
       {
         type: "confirm",
         name: "ts",
         message: "Are you using typescript?",
       },
+      {
+        type: "confirm",
+        name: "continue",
+        message: "Do you need Jest and enzyme well configured, wanna continue?",
+      },
     ])
   }
 
   writing() {
+    if (!this.answers.continue) return
+
     const ext = this.answers.ts ? "ts" : "js"
+    const core = this.answers.core ? "/core" : ""
     const compName = pascalCase(this.answers.name)
-    const componentsPath = `src/app/components/${compName}`
+    const componentsPath = `src/app/components${core}/${compName}`
     const templateConfig = {
       name: compName,
     }
 
-    // Create index
+    // Create test
     this.fs.copyTpl(
-      this.templatePath(`index.${ext}.tmpl`),
-      this.destinationPath(`${componentsPath}/index.${ext}`),
-      templateConfig,
-    )
-
-    // Create styled
-    this.fs.copyTpl(
-      this.templatePath("styled.tmpl"),
-      this.destinationPath(`${componentsPath}/styled.${ext}`),
+      this.templatePath(`sample.ejs`),
+      this.destinationPath(`${componentsPath}/${compName}.test.${ext}`),
       templateConfig,
     )
   }
