@@ -13,6 +13,7 @@
     "yeoman-generator"
   ],
   "dependencies": {
+    "change-case": "^4.1.1",
     "generator-generator": "^4.0.2",
     "yeoman-generator": "^4.4.0"
   },
