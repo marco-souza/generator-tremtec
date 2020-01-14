@@ -1,7 +1,7 @@
 {
   "name": "generator-tremtec",
   "version": "0.1.0",
-  "description": "",
+  "description": "TremTec yeoman generator",
   "scripts": {
     "build": "yarn link",
     "start": "yo tremtec"
