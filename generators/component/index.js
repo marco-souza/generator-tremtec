@@ -39,20 +39,18 @@ module.exports = class extends Generator {
     const corePath = this.answers.core ? "/core" : ""
     const compName = pascalCase(this.answers.name)
     const componentsPath = `src/app/components${corePath}/${compName}`
-    const templateConfig = {
-      name: compName,
-    }
+    const templateConfig = { name: compName }
 
     // Create index
     this.fs.copyTpl(
-      this.templatePath(`index.${ext}.tmpl`),
+      this.templatePath(`index.${ext}.ejs`),
       this.destinationPath(`${componentsPath}/index.${ext}`),
       templateConfig,
     )
 
     // Create styled
     this.fs.copyTpl(
-      this.templatePath("styled.tmpl"),
+      this.templatePath("styled.ejs"),
       this.destinationPath(`${componentsPath}/styled.${ext}`),
       templateConfig,
     )
