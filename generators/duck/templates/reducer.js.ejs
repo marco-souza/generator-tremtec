@@ -1,0 +1,14 @@
+import { CHANGE_<%= name.toUpperCase() %>, initialState } from './constants'
+
+export default (state = initialState, action) => {
+  switch (action.type) {
+    case CHANGE_<%= name.toUpperCase() %>:
+      return {
+        ...state,
+        <%= name.toLowerCase() %>Data: action.payload,
+      }
+
+    default:
+      return state
+  }
+}

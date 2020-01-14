@@ -1,0 +1,31 @@
+import { useSelector, useDispatch } from 'react-redux'
+
+import { change<%= name %>, StoreType, initialState } from './constants'
+import reducer from './reducer'
+
+// Setup redux hook
+export default () => {
+  const state = useSelector((state: StoreType) => state.<%= name.toLowerCase() %>)
+  const dispatch = useDispatch()
+
+  const actions = {
+    // set sync actions
+    change<%= name %>: (payload) => dispatch(change<%= name %>(payload)),
+    // set async actions
+    loadGithubProfile: async (username: string) => {
+      const resp = await fetch(`https://api.github.com/users/${username}`)
+      const data = resp.json()
+
+      console.log(data)
+      dispatch(change<%= name %>(data))
+    },
+  }
+
+  return {
+    state,
+    actions,
+  }
+}
+
+// Make easy to import all important ducks information
+export { reducer, initialState }
