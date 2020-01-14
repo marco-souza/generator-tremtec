@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Marco Antonio",
+      "authorEmail": "ma.souza.junior@gmail.com",
+      "authorUrl": ""
+    }
+  }
+}
