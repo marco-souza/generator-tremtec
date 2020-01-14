@@ -17,6 +17,12 @@ module.exports = class extends Generator {
       },
       {
         type: "confirm",
+        name: "core",
+        message: "Is it a core component?",
+        default: false,
+      },
+      {
+        type: "confirm",
         name: "ts",
         message: "Are you using typescript?",
       },
@@ -30,8 +36,9 @@ module.exports = class extends Generator {
 
   writing() {
     const ext = this.answers.ts ? "ts" : "js"
+    const corePath = this.answers.core ? "/core" : ""
     const compName = pascalCase(this.answers.name)
-    const componentsPath = `src/app/components/${compName}`
+    const componentsPath = `src/app/components${corePath}/${compName}`
     const templateConfig = {
       name: compName,
     }
