@@ -1,8 +1,8 @@
 name: Npm Publish
 
 on:
-  release:
-    types: [published]
+  create:
+    tags:
 
 jobs:
   publish-npm:
