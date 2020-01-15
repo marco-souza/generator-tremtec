@@ -1,0 +1,24 @@
+import { createAction } from "app/helpers/redux"
+
+// select duck from store
+export const DUCK_NAME = "<%= name.toUpperCase() %>"
+
+// redux types
+export const CHANGE_<%= name.toUpperCase() %> = `${DUCK_NAME}/CHANGE_<%= name.toUpperCase() %>`
+
+// create actions
+export const change<%= name %> = createAction(CHANGE_<%= name.toUpperCase() %>)
+
+// types and interfaces
+export interface StoreType {
+  <%= name.toLowerCase() %>: DuckType
+}
+
+export interface DuckType {
+  <%= name.toLowerCase() %>Data?: object
+}
+
+// create initial state
+export const initialState: DuckType = {
+  <%= name.toLowerCase() %>Data: null,
+}

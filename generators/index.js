@@ -1,11 +1,7 @@
 const Generator = require("yeoman-generator")
 const { pascalCase } = require("change-case")
 
-const ComponentGenerator = require("./comp")
-
-const generators = {
-  component: "tremtec:comp",
-}
+const generators = ["component", "test", "duck"]
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -18,10 +14,10 @@ module.exports = class extends Generator {
         type: "list",
         name: "generator",
         message: "What do you wanna create?",
-        choices: Object.keys(generators),
+        choices: generators,
       },
     ]).then(answers => {
-      const selectedGenerator = generators[answers.generator]
+      const selectedGenerator = `tremtec:${answers.generator}`
       this.composeWith(selectedGenerator)
     })
   }
