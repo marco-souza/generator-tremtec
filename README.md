@@ -1,6 +1,6 @@
 # TremTec Code Generator
 
-![Github Actions](https://github.com/marco-souza/react-base-project/workflows/Publish/badge.svg)
+![Github Actions](https://github.com/marco-souza/generator-tremtec/workflows/Publish/badge.svg)
 
 Yeoman generator to create:
 
