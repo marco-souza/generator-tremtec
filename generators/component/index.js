@@ -35,7 +35,7 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    const ext = this.answers.ts ? "ts" : "js"
+    const ext = this.answers.ts ? "tsx" : "js"
     const corePath = this.answers.core ? "/core" : ""
     const compName = pascalCase(this.answers.name)
     const componentsPath = `src/app/components${corePath}/${compName}`
